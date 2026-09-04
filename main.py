@@ -1,6 +1,6 @@
 import logging
 from prompts import WEDDING_PLANNER_AGENT_PROMPT, USER_PROMPT_FOR_MAIN_AGENT
-from models import openai_model
+from models import get_openai_model
 from agents import delegate_to_subagent1, delegate_to_subagent2
 from langchain.messages import HumanMessage
 from langchain.agents import create_agent
@@ -18,7 +18,7 @@ update_system_prompt = WEDDING_PLANNER_AGENT_PROMPT.format(requirements=user_req
 # creating the main agent
 logging.info("Creating the main agent...")
 main_wedding_planner_agent = create_agent(
-    model=openai_model,
+    model=get_openai_model(),
     tools=[delegate_to_subagent1, delegate_to_subagent2],
     name="Wedding Planner",
     system_prompt=update_system_prompt,

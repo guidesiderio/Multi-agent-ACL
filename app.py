@@ -767,7 +767,10 @@ def render_sidebar() -> bool:
         st.button("Load sample brief", use_container_width=True, on_click=load_sample_values)
 
         if st.button("Refresh agent clients", use_container_width=True):
+            from agents import reset_agent_clients
+
             load_agent_dependencies.clear()
+            reset_agent_clients()
             st.toast("Agent clients refreshed.")
 
         st.divider()
@@ -784,9 +787,9 @@ def render_sidebar() -> bool:
 @st.cache_resource(show_spinner=False)
 def load_agent_dependencies():
     from agents import delegate_to_subagent1, delegate_to_subagent2
-    from models import openai_model
+    from models import get_openai_model
 
-    return openai_model, [delegate_to_subagent1, delegate_to_subagent2]
+    return get_openai_model(), [delegate_to_subagent1, delegate_to_subagent2]
 
 
 def build_requirements(payload: dict[str, Any]) -> str:
