@@ -20,7 +20,7 @@ logging.info("Creating the main agent...")
 main_wedding_planner_agent = create_agent(
     model=get_openai_model(),
     tools=[delegate_to_subagent1, delegate_to_subagent2],
-    name="Wedding Planner",
+    name="Wedding_Planner",
     system_prompt=update_system_prompt,
 )
 

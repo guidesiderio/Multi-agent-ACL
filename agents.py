@@ -16,14 +16,14 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(
 def get_subagent1():
     """Return Subagent 1, creating it on first delegation."""
     logging.info("Initializing Subagent 1...")
-    return create_agent(model=get_openai_model(), tools=[search_web], name="Subagent 1")
+    return create_agent(model=get_openai_model(), tools=[search_web], name="Subagent_1")
 
 
 @lru_cache(maxsize=1)
 def get_subagent2():
     """Return Subagent 2, creating it on first delegation."""
     logging.info("Initializing Subagent 2...")
-    return create_agent(model=get_openai_model(), tools=[search_web], name="Subagent 2")
+    return create_agent(model=get_openai_model(), tools=[search_web], name="Subagent_2")
 
 
 def reset_agent_clients() -> None:
