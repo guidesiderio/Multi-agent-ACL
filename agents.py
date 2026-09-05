@@ -2,11 +2,11 @@ import logging
 from functools import lru_cache
 
 from langchain.agents import create_agent
-from langchain.tools import tool
 from langchain.messages import HumanMessage
+from langchain.tools import tool
+
 from models import get_openai_model
 from tools import get_tavily_client, search_web
-
 
 # configure logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
